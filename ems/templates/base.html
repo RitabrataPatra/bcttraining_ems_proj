@@ -1,0 +1,32 @@
+<!-- employees/templates/base.html -->
+
+<!--This is base layout and will be used and seen everywhere-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}EMS{% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <h1>Employee Management System</h1>
+      <!--You will see this navbar everywhere✌-->
+      <nav>
+        <a href="{% url 'employee_list' %}">Home</a>
+        <a href="{% url 'employee_create' %}">Add New Employee</a>
+        <a href="{% url 'department_list' %}">Manage Departments</a>
+        <a href="{% url 'position_list' %}">Manage Positions</a>
+      </nav>
+      <hr />
+    </header>
+    <!--You will use and see this section -->
+    <main>{% block content %} {% endblock %}</main>
+
+    <!--This footer will be available on every page-->
+    <footer>
+      <hr />
+      <p>&copy; 2024 EMS</p>
+    </footer>
+  </body>
+</html>

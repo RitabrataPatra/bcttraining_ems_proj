@@ -1,0 +1,29 @@
+<!-- employees/templates/employees/position_form.html -->
+
+{% extends 'base.html' %}
+<!--using the base.html as layout -->
+
+{% block title %}{{ form.instance.pk|yesno:"Update Position,Add New Position"
+}}{% endblock %} {% block content %}
+<!--
+   ✅[form.instance] refers to the specific model instance that the form is bound to.
+
+    ✅[pk] stands for "primary key," which is the unique identifier for a database record in Django.
+
+    ✅If [form.instance.pk] exists (i.e., it’s not None), it means that the form is editing an existing object. If it’s None, the form is creating a new object.
+-->
+<h2>{{ form.instance.pk|yesno:"Update Position,Add New Position" }}</h2>
+
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+<!--
+        
+    ✨The {{ form.as_p }} expression in a Django template is used to render a form's fields as HTML wrapped in paragraph (<p>) tags. 
+    
+-->
+  <button type="submit">Save</button>
+</form>
+
+<p><a href="{% url 'position_list' %}">Cancel</a></p>
+<!--Clicking cancel will  send us back to position_list page-->
+{% endblock %}
